@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulaire de création de compte</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="container text-center my-4">
+        <h1>Formulaire de création de compte</h1>
+    </header>
+
+    <main class="container">
+        <form id="formClient" action="#" method="POST" class="needs-validation" novalidate>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nom">Nom</label>
+                    <input type="text" class="form-control" id="nom" name="nom" required>
+                    <div class="invalid-feedback">Veuillez entrer votre nom.</div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" class="form-control" id="prenom" name="prenom" required>
+                    <div class="invalid-feedback">Veuillez entrer votre prénom.</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label for="adresse">Adresse</label>
+                    <input type="text" class="form-control" id="adresse" name="adresse" required>
+                    <div class="invalid-feedback">Veuillez entrer votre adresse.</div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="cp">Code Postal</label>
+                    <input type="text" class="form-control" id="cp" name="cp" required>
+                    <div class="invalid-feedback">Veuillez entrer un code postal valide.</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="ville">Ville</label>
+                    <input type="text" class="form-control" id="ville" name="ville" required="">
+                    <div class="invalid-feedback">Veuillez entrer votre ville.</div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="tel">Téléphone</label>
+                    <input type="tel" class="form-control" id="tel" name="tel" required>
+                    <div class="invalid-feedback">Veuillez entrer un numéro de téléphone valide.</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                    <div class="invalid-feedback">Veuillez entrer un email valide.</div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="civilite">Civilité</label>
+                    <select class="form-control" id="civilite" name="civilite" required>
+                        <option value="">Choisissez...</option>
+                        <option value="M.">M.</option>
+                        <option value="Mme">Mme</option>
+                    </select>
+                    <div class="invalid-feedback">Veuillez choisir votre civilité.</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="login">Login</label>
+                    <input type="text" class="form-control" id="login" name="login" required>
+                    <div class="invalid-feedback">Veuillez entrer un login.</div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                    <div class="invalid-feedback">Veuillez entrer un mot de passe.</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="confirmPassword">Confirmez le mot de passe</label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                    <div class="invalid-feedback">Veuillez confirmer votre mot de passe.</div>
+                </div>
+            </div>
+
+            <div class="alert alert-danger" id="error-message" style="display:none;">
+                Les mots de passe ne correspondent pas. Veuillez réessayer.
+            </div>
+
+            <button type="submit" class="btn btn-primary">Créer le compte</button>
+        </form>
+    </main>
+
+    <footer class="container text-center my-4">
+        <p>&copy; 2024 Mon formulaire étudiant</p>
+    </footer>
+
+    <!-- Lien vers jQuery local -->
+    <script src="./jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#formClient').on('submit', function(event) {
+                event.preventDefault();  // Empêche l'envoi du formulaire avant validation
+
+                var password = $('#password').val();
+                var confirmPassword = $('#confirmPassword').val();
+
+                if (password !== confirmPassword) {
+                    $('#error-message').show();  // Affiche le message d'erreur
+                } else {
+                    $('#error-message').hide();  // Cache le message d'erreur si les mots de passe correspondent
+                    this.submit();  // Soumet le formulaire
+                }
+            });
+        });
+    </script>
+</body>
+</html>
